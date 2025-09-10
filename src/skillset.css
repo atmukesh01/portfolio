@@ -1,0 +1,83 @@
+.skillset-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #1a202c;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.skillset-section h2 {
+  text-align: center;
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  background: #e0e7ff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 8px rgb(229 231 235 / 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.skill-item:hover {
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.6);
+}
+
+.skill-icon {
+  font-size: 2.75rem;
+  color: #2563eb;
+  margin-right: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.skill-info {
+  flex: 1;
+}
+
+.skill-name {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.skill-bar-container {
+  background: #cbd5e1;
+  height: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  border-radius: 12px 0 0 12px;
+  width: 0;
+  animation: fillBar 1.5s ease forwards;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    /* final width done inline */
+  }
+}

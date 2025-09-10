@@ -1,1 +1,1 @@
-hello public
+hello
