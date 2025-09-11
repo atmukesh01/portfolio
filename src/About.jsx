@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./About.css";
 
-const profileImage = "/profile.jpg";
+const profileImage = "/src/assets/blr.jpg";
 const linkedInUrl = "https://www.linkedin.com/in/yourprofile";
 const githubUrl = "https://github.com/atmukesh01";
-const leetCodeUrl = "https://leetcode.com/Mukesht";
+const leetCodeUrl = "https://leetcode.com/Mukesh036";
+
 
 const LoadingName = () => {
   const name = "Mukesh";
@@ -24,6 +25,17 @@ const LoadingName = () => {
     </div>
   );
 };
+const bgBefore = document.querySelector('#animated-bg::before');
+const bg = document.getElementById('animated-bg');
+
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth) * 200; // max 20px shift horizontally
+  const y = (e.clientY / window.innerHeight) * 200; // max 20px shift vertically
+
+  bg.style.setProperty('--bg-pos-x', `${x}px`);
+  bg.style.setProperty('--bg-pos-y', `${y}px`);
+});
+
 window.addEventListener('load', () => {
   // Wait for bounceFade animations to finish (about 1s)
   setTimeout(() => {
@@ -42,6 +54,9 @@ window.addEventListener('load', () => {
     }
   }, 3000); // slightly longer than animation duration
 });
+
+
+
 
 const About = () => {
   const [loading, setLoading] = useState(true);
@@ -64,12 +79,13 @@ const About = () => {
               <a href="#projects" className="nav-link">Projects</a>
               <a href="#contact" className="nav-link">Contact</a>
             </div>
+            
           </nav>
 
           <div id="animated-bg" />
 
           <section className="about-section" id="about">
-            <img src={profileImage} alt="" className="profile-image top-right" />
+            <img src={profileImage} alt="profile" className="profile-image top-right" />
             <div className="content-center">
               <h1>About Me</h1>
               <p>
