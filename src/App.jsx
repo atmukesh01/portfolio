@@ -1,8 +1,7 @@
-// src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from "react-router-dom";
-import About from "./about";
-import Projects from "./projects";
+import About from "./About";
+import Projects from "./Projects";
 import Contact from "./Contact";
 import Skillset from "./Skillset";
 import "./App.css";
@@ -11,7 +10,6 @@ function App() {
   return (
     <Router>
       <header className="navbar">
-        <div className=""></div>
         <nav className="nav-right">
           <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : undefined)}>
             About
@@ -26,8 +24,13 @@ function App() {
             Contact
           </NavLink>
         </nav>
-      </header>
-
+    <img
+  src="src/assets/resume.png"
+  alt="Resume Preview"
+  className="resume-image"
+  onClick={() => window.open('src/assets/Resume.pdf', '_blank')}
+  />
+</header>
       <main className="main-content no-scroll">
         <Routes>
           <Route path="/" element={<Navigate to="/about" replace />} />
@@ -41,5 +44,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
