@@ -181,7 +181,7 @@ body > #root {
   z-index: 2;
 }
 .profile-image.top-right:hover {
-  transform: scale(1.06);
+  transform: scale(1.5);
   box-shadow: 0 0 35px black, 0 0 70px black ;
 }
 
