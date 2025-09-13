@@ -1,53 +1,167 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Skillset.css";
 
-// Array of skill logos with image source and name (replace src with your actual paths)
-const skills = [
-  { name: "C", src: "/assets/c-logo.svg" },
-  { name: "C++", src: "/assets/cpp-logo.svg" },
-  { name: "HTML", src: "/assets/html-logo.svg" },
-  { name: "CSS", src: "/assets/css-logo.svg" },
-  { name: "Bootstrap", src: "/assets/bootstrap-logo.svg" },
-  { name: "JavaScript", src: "/assets/javascript-logo.svg" },
-  { name: "PHP", src: "/assets/php-logo.svg" },
-  { name: "Git", src: "/assets/git-logo.svg" },
-  { name: "GitHub", src: "/assets/github-logo.svg" },
-  { name: "Python", src: "/assets/python-logo.svg" },
-  { name: "Flask", src: "/assets/flask-logo.svg" },
-  { name: "Linux", src: "/assets/linux-logo.svg" },
-  { name: "Arduino", src: "/assets/arduino-logo.svg" },
-  { name: "x86", src: "/assets/x86-logo.svg" },
-  { name: "Arch Linux", src: "/assets/arch-logo.svg" },
-  { name: "Java", src: "/assets/java-logo.svg" },
-  { name: "MySQL", src: "/assets/mysql-logo.svg" },
-  { name: "Oracle", src: "/assets/oracle-logo.svg" },
-  { name: "SQL Server", src: "/assets/sqlserver-logo.svg" },
-  { name: "MongoDB", src: "/assets/mongodb-logo.svg" },
-  { name: "OpenCV", src: "/assets/opencv-logo.svg" },
-  { name: "TypeScript", src: "/assets/typescript-logo.svg" },
-  { name: "Angular", src: "/assets/angular-logo.svg" },
-  { name: "React", src: "/assets/react-logo.svg" },
-  { name: "Node.js", src: "/assets/nodejs-logo.svg" },
-  { name: "Express", src: "/assets/express-logo.svg" },
-  { name: "R", src: "/assets/r-logo.svg" },
-  { name: "Next.js", src: "/assets/nextjs-logo.svg" },
-];
-
-const Skillset = () => {
+const LoadingName = () => {
+  const name = "Mukesh";
   return (
-    <section className="skillset-section">
-      <h2>LANGUAGES AND TOOLS</h2>
-      <div className="skills-grid">
-        {skills.map(({ src, name }, idx) => (
-          <div className="skill-logo-box" key={idx}>
-            <img src={src} alt={name} />
-            <span className="skill-badge">{name}</span>
-          </div>
+    <div className="loading-container">
+      <h1 className="loading-name">
+        {name.split("").map((char, idx) => (
+          <span key={idx} className="loading-letter" style={{ animationDelay: `${idx * 0.3}s` }}>
+            {char}
+          </span>
         ))}
-      </div>
-    </section>
+      </h1>
+    </div>
   );
 };
 
+const skills = [
+    { name: "C", src: "https://cdn.jsdelivr.net/npm/devicon/icons/c/c-original.svg" },
+    { name: "C++", src: "https://cdn.jsdelivr.net/npm/devicon/icons/cplusplus/cplusplus-original.svg" },
+    { name: "HTML", src: "https://cdn.jsdelivr.net/npm/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS", src: "https://cdn.jsdelivr.net/npm/devicon/icons/css3/css3-original.svg" },
+    { name: "JavaScript", src: "https://cdn.jsdelivr.net/npm/devicon/icons/javascript/javascript-original.svg" },
+    { name: "PHP", src: "https://cdn.jsdelivr.net/npm/devicon/icons/php/php-original.svg" },
+    { name: "Python", src: "https://cdn.jsdelivr.net/npm/devicon/icons/python/python-original.svg" },
+    { name: "Java", src: "https://cdn.jsdelivr.net/npm/devicon/icons/java/java-original.svg" },
+    { name: "TypeScript", src: "https://cdn.jsdelivr.net/npm/devicon/icons/typescript/typescript-original.svg" },
+    { name: "Bootstrap", src: "https://cdn.jsdelivr.net/npm/devicon/icons/bootstrap/bootstrap-original.svg" },
+    { name: "Flask", src: "https://cdn.jsdelivr.net/npm/devicon/icons/flask/flask-original.svg" },
+    { name: "Angular", src: "https://cdn.jsdelivr.net/npm/devicon/icons/angular/angular-original.svg" },
+    { name: "React", src: "https://cdn.jsdelivr.net/npm/devicon/icons/react/react-original.svg" },
+    { name: "Node.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "Express", src: "https://cdn.jsdelivr.net/npm/devicon/icons/express/express-original.svg" },
+    { name: "Next.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nextjs/nextjs-original.svg" },
+    { name: "Git", src: "https://cdn.jsdelivr.net/npm/devicon/icons/git/git-original.svg" },
+    { name: "GitHub", src: "https://cdn.jsdelivr.net/npm/devicon/icons/github/github-original.svg" },
+    { name: "Linux", src: "https://cdn.jsdelivr.net/npm/devicon/icons/linux/linux-original.svg" },
+    { name: "MySQL", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mysql/mysql-original.svg" },
+    { name: "Oracle", src: "https://cdn.jsdelivr.net/npm/devicon/icons/oracle/oracle-original.svg" },
+    { name: "MongoDB", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mongodb/mongodb-original.svg" }
+];
+
+const Skillset = ({ isPageLoading, onLoadingComplete }) => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    if (isPageLoading) {
+      const timer = setTimeout(() => {
+        onLoadingComplete();
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [isPageLoading, onLoadingComplete]);
+
+  useEffect(() => {
+    if (isPageLoading) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const particles = [];
+    const mouse = { x: null, y: null };
+    let animationFrameId;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      particles.length = 0;
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2.5 + 1,
+          baseX: Math.random() * canvas.width,
+          baseY: Math.random() * canvas.height,
+        });
+      }
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const handleMouseMove = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        let dx = mouse.x - p.x;
+        let dy = mouse.y - p.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // --- SMOOTHER REPELLING LOGIC ---
+        const maxDistance = 200;
+        if (distance < maxDistance) {
+            const force = (maxDistance - distance) / maxDistance; // Easing based on distance
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            p.x -= forceDirectionX * force * 2.5; // Apply stronger force when closer
+            p.y -= forceDirectionY * force * 2.5;
+        } else if (p.x !== p.baseX || p.y !== p.baseY) {
+            // --- SMOOTHER RETURN LOGIC ---
+            p.x -= (p.x - p.baseX) / 30; // Slower, more graceful return
+            p.y -= (p.y - p.baseY) / 30;
+        }
+        
+        ctx.fillStyle = "rgba(80, 80, 80, 0.8)";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.strokeStyle = "rgba(50, 50, 50, 0.6)";
+      ctx.lineWidth = 3;
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i; j < particles.length; j++) {
+          let dist = Math.sqrt(
+            Math.pow(particles[i].x - particles[j].x, 2) +
+            Math.pow(particles[i].y - particles[j].y, 2)
+          );
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isPageLoading]);
+
+  return (
+    <>
+      {isPageLoading ? (
+        <LoadingName />
+      ) : (
+        <>
+          <canvas ref={canvasRef} className="web-canvas-full"></canvas>
+          <section className="skillset-section">
+            <h2>LANGUAGES AND TOOLS</h2>
+            <div className="skills-grid">
+              {skills.map(({ src, name }, idx) => (
+                <div className="skill-logo-box" key={idx}>
+                  <img src={src} alt={name} />
+                  <span className="skill-badge">{name}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
+    </>
+  );
+};
 
 export default Skillset;
+

@@ -42,7 +42,7 @@ body > #root {
 
 /* Navbar fixed at top */
 .navbar {
-  visibility: hidden;
+ 
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 60px;
@@ -373,4 +373,172 @@ body > #root {
 @keyframes pulseOpacity {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 0.3; }
+}
+/* --- Canvas Styling --- */
+/* --- Fullscreen Canvas Styling --- */
+.web-canvas-full-about {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it behind all other content */
+  pointer-events: none;
+}
+
+/* --- About Section with Convex "Glass" Effect --- */
+.about-section {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px 60px;
+  
+  /* Mild blue, semi-transparent background */
+  background: rgba(59, 130, 246, 0.15); 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  border-radius: 36px;
+  /* Convex shadow effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.1), /* Top inner highlight */
+    0 10px 30px rgba(0, 0, 0, 0.3); /* Bottom outer shadow */
+
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1; /* Ensure it sits above the fixed background */
+}
+
+/* --- Profile Image --- */
+.profile-image.top-right {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image.top-right:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+}
+
+/* --- Content & Social Icons --- */
+.content-center h1 {
+  font-size: 2.7rem;
+  font-weight: 800;
+  margin-bottom: 26px;
+  color: #0d3d8c; /* Dark blue font color */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Lighter shadow for dark text */
+}
+
+.content-center p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  color: #0d3d8c; /* Dark blue font color */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark text */
+}
+
+/* Previous Social Icon Styles */
+/* Previous Social Icon Styles */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  width: 65px; /* Slightly larger */
+  height: 65px; /* Slightly larger */
+  border-radius: 50%;
+  /* New gradient and 3D shadow for a more attractive default state */
+  background: linear-gradient(145deg, #2f3347, #1c1f2b);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.1), /* Inner highlight */
+    5px 5px 15px rgba(0, 0, 0, 0.3), /* Outer shadow */
+    -5px -5px 15px rgba(58, 63, 84, 0.2); /* Outer highlight */
+  transition: all 0.3s ease; /* Smoother transition */
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons a:hover {
+  /* Updated hover to be a glowing effect */
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+  transform: scale(1.15) translateY(-5px);
+}
+
+.social-icons img {
+  width: 35px; /* Slightly larger icon */
+  height: 35px; /* Slightly larger icon */
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(16, 45, 102, 0.28));
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1); /* Slight grow effect on icon */
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px #fff);
+}
+
+
+/* --- Loading Styles --- */
+.loading-container {
+  height: 100vh;
+  width: 100vw;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 100000;
+  overflow: hidden;
+}
+.loading-name {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #2563eb;
+  letter-spacing: 0.3em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  user-select: none;
+  display: flex;
+  gap: 0.2em;
+}
+.loading-letter {
+  opacity: 0;
+  animation: bounceFade 1s forwards;
+}
+@keyframes bounceFade {
+  0% { opacity: 0; transform: translateY(30px); }
+  50% { opacity: 1; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.loading-letter {
+  opacity: 0;
+  animation: appear 0.5s forwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
