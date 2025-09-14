@@ -1,17 +1,18 @@
-/* General Body and Root Styles (Unchanged) */
+/* General Body and Root Styles */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
   background-color: #000000;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: auto;  /* Enable scrolling on viewport */
 }
 
 body > #root {
   min-height: 100vh;
 }
 
-/* Navbar container is unchanged */
+/* Navbar container */
 .navbar {
   position: fixed;
   top: 0;
@@ -30,7 +31,7 @@ body > #root {
   z-index: 1000;
 }
 
-/* nav-right container is unchanged */
+/* nav-right container */
 .nav-right {
   display: flex;
   flex-direction: column;
@@ -39,7 +40,7 @@ body > #root {
   align-items: center;
 }
 
-/* --- UPDATED NAV LINK STYLES --- */
+/* Updated nav link styles */
 .nav-right a {
   color: #f8fafc;
   text-decoration: none;
@@ -49,12 +50,11 @@ body > #root {
   transition: background-color 0.3s ease;
   width: 90%;
   
-  /* UPDATED: Use Flexbox to align icon and text */
   display: flex;
-  align-items: center; /* This vertically centers the icon with the text */
-  justify-content: flex-start; /* Aligns content to the left */
-  gap: 15px; /* This creates a nice space between the icon and the text */
-  padding-left: 30px; /* Added padding to align all links nicely */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  padding-left: 30px;
 }
 
 .nav-right a:hover {
@@ -66,41 +66,56 @@ body > #root {
   color: white;
 }
 
-/* The rest of the CSS is unchanged */
+/* Main content that occupies full width and scrolls with hidden scrollbar */
 .main-content {
-  padding-left: 260px;
-  padding-right: 40px; 
+  padding-left: 260px; /* Leaves space for fixed navbar */
+  padding-right: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+  box-sizing: border-box;
+  
+  width: 100%;        /* Full viewport width */
+  max-width: none;    /* Remove max-width to allow full width */
+  min-height: 100vh;  /* Ensure it covers full viewport height */
+  
+  overflow-y: scroll; /* Enable scroll */
+  scrollbar-width: none; /* Firefox scrollbar hidden */
+  -ms-overflow-style: none; /* IE 10+ scrollbar hidden */
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Centering wrapper inside main-content */
+.main-content-inner {
+  max-width: 1200px;
+  margin: 0 auto;    /* Center content horizontally */
+}
+
+/* Section styling */
 section {
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 30px;
   width: 100%;
-  min-height: 200px;
+  
+  min-height: auto;
   overflow: visible;
 }
-/* --- Resume Button Styles (Add to the end of App.css) --- */
-/* --- Resume Button Styles --- */
-/* --- Resume Button Styles (UPDATED SELECTOR) --- */
+
+/* Resume Button Styles */
 .nav-right .resume-button {
-  /* Flexbox for icon and text alignment */
   display: flex;
   align-items: center;
-  justify-content: center; /* This will now override justify-content: flex-start */
+  justify-content: center;
   gap: 10px;
-
-  /* Button appearance */
   width: 70%;
-  padding: 12px 22px; /* This will now override the default padding */
-  
+  padding: 12px 22px; 
   background-color: #000000; 
-  color: white; /* This will now override the default color */
+  color: white; 
   font-weight: 600;
   text-decoration: none;
   border-radius: 8px;
