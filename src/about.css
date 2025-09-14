@@ -362,17 +362,28 @@ body > #root {
   width: 100%;
   height: 100%;
   background:
-    repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0 10px, transparent 10px 20px),
-    repeating-linear-gradient(-45deg, rgba(255,255,255,0.06) 0 10px, transparent 10px 20px);
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.06) 0 10px, transparent 10px 20px),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.06) 0 10px, transparent 10px 20px);
   background-position: var(--bg-pos-x, 0px) var(--bg-pos-y, 0px);
-  animation: pulseOpacity 4s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
+
+  /* UPDATED: Changed animation name */
+  animation: pulseGlow 4s ease-in-out infinite;
 }
 
-@keyframes pulseOpacity {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 0.3; }
+/* UPDATED: Renamed and modified the animation to include the blue glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    /* Standard blue glow */
+    filter: drop-shadow(0 0 7px rgba(37, 99, 235, 0.5));
+  }
+  50% {
+    opacity: 0.3;
+    /* Brighter, more intense blue glow */
+    filter: drop-shadow(0 0 14px rgba(37, 99, 235, 0.8));
+  }
 }
 /* --- Canvas Styling --- */
 /* --- Fullscreen Canvas Styling --- */
@@ -425,7 +436,7 @@ body > #root {
 }
 
 .profile-image.top-right:hover {
-  transform: scale(1.1);
+  transform: scale(1.3);
   box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
 }
 
