@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink, Navigate, useLocation } from "react-router-dom";
+import { FaUser, FaCode, FaProjectDiagram, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Skillset from "./Skillset";
 import "./App.css";
 
-// We need a wrapper component to use the useLocation hook
 const AppContent = () => {
   const location = useLocation();
   const [isPageLoading, setIsPageLoading] = useState(false);
 
-  // This effect runs EVERY time the URL changes
   useEffect(() => {
-    // Check if the new page is one that needs a loader
     if (location.pathname === '/about' || location.pathname === '/skillset') {
       setIsPageLoading(true);
     }
-  }, [location]); // Dependency is the location object
+  }, [location]);
 
   const handleLoadingComplete = () => {
     setIsPageLoading(false);
@@ -25,33 +23,37 @@ const AppContent = () => {
 
   return (
     <>
-      {/* Conditionally render the navbar based on the loading state */}
       {!isPageLoading && (
         <header className="navbar">
+          {/* --- UPDATED: The resume button is now inside the nav block --- */}
           <nav className="nav-right">
             <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : undefined)}>
-              About
+              <FaUser /> About
             </NavLink>
             <NavLink to="/skillset" className={({ isActive }) => (isActive ? "active" : undefined)}>
-              Skillset
+              <FaCode /> Skillset
             </NavLink>
             <NavLink to="/projects" className={({ isActive }) => (isActive ? "active" : undefined)}>
-              Projects
+              <FaProjectDiagram /> Projects
             </NavLink>
             <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : undefined)}>
-              Contact
+              <FaEnvelope /> Contact
             </NavLink>
+            
+            {/* The resume button has been moved here */}
+            <a 
+              href="src/assets/Resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="resume-button"
+            >
+              <FaFileAlt /> View Resume
+            </a>
           </nav>
-          <img
-            src="src/assets/resume.png"
-            alt="Resume Preview"
-            className="resume-image"
-            onClick={() => window.open('src/assets/Resume.pdf', '_blank')}
-          />
         </header>
       )}
 
-      <main className="main-content no-scroll">
+      <main className="main-content">
         <Routes>
           <Route path="/" element={<Navigate to="/about" replace />} />
           <Route
@@ -71,7 +73,6 @@ const AppContent = () => {
   );
 };
 
-// The main App component now just sets up the Router
 function App() {
   return (
     <Router>
