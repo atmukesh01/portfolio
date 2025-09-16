@@ -1,50 +1,200 @@
-.projects-main {
-  padding: 40px 20px;
-  max-width: 960px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background-color: #fefefe;
-  overflow-y: auto;
-  box-sizing: border-box;
+/* Global Styles & Background */
+body {
+  background-color: #0f172a; /* Dark background color */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; /* Prevent body scroll */
 }
 
+/* Full-screen Web Canvas */
+.web-canvas-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place behind other content */
+}
+
+/* Main Projects Container */
+.projects-main {
+  height: 100vh;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  padding: 120px 40px 40px;
+  background-color: transparent; /* Transparent background */
+  box-sizing: border-box;
+  direction: ltr; /* Ensure scrollbar on right (hidden but scroll active) */
+
+  /* Hide scrollbar for WebKit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.projects-main::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+/* Projects Header */
 .projects-header {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: 40px;
-  color: #0f172a;
+  margin-bottom: 50px;
+  color: #f8fafc; /* Light text color */
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
+/* Projects Container Grid */
 .projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Glassmorphism Project Card */
+.project-card {
+  background: rgba(30, 41, 59, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.project-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px 28px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  transition: box-shadow 0.3s ease;
-  cursor: default;
 }
 
 .project-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.project-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #1e293b;
+/* Image Container inside Card */
+.project-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
-.project-description {
+/* Project Image Style */
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+}
+
+.project-image-container:hover .project-image {
+  transform: scale(1.1);
+}
+
+/* Image Overlay on Hover */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.project-image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+/* Overlay Text */
+.overlay-text {
+  color: #fff;
+  font-weight: 600;
   font-size: 1.1rem;
+  transform: translateY(15px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.project-image-container:hover .overlay-text {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Project Content */
+.project-content {
+  flex-grow: 1;
+}
+
+/* Project Title */
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #e2e8f0; /* Light slate color */
+}
+
+/* Project Description */
+.project-description {
+  font-size: 1rem;
   line-height: 1.6;
-  color: #475569;
+  color: #94a3b8; /* Light gray */
+  margin-bottom: 0;
+}
+
+/* Loading Animation Container */
+.loading-container {
+  height: 100vh;
+  width: 100vw;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+/* Loading Name Style */
+.loading-name {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #3b82f6;
+  letter-spacing: 0.2em;
+  user-select: none;
+  display: flex;
+}
+
+/* Individual Loading Letters */
+.loading-letter {
+  opacity: 0;
+  animation: bounceFade 1.2s forwards;
+}
+
+/* Bounce Fade Animation */
+@keyframes bounceFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
