@@ -2,47 +2,50 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "./Projects.css";
 
+// We no longer import the images.
+// Instead, we use direct string paths to the 'public' folder.
+
 const projectsData = [
   {
     title: "Personal Portfolio Website",
     description:
       "A fully responsive portfolio site built with React to showcase work, skills, and contact information.",
-    imageUrl: "https://picsum.photos/seed/portfolio/300/200",
-    githubUrl: "https://github.com/your-username/portfolio-website",
+    imagesrc: "src/assets/portfolio.png", // Path from the public folder
+    githubUrl: "https://github.com/atmukesh01/portfolio",
   },
   {
     title: "E-Commerce Platform",
     description:
       "A full-stack e-commerce application with product listing, shopping cart, checkout, and payment integration.",
-    imageUrl: "https://picsum.photos/seed/ecommerce/300/200",
+    imagesrc: "/assets/ecommerce.png", // Path from the public folder
     githubUrl: "https://github.com/your-username/ecommerce-platform",
   },
   {
     title: "Financial Dashboard",
     description:
       "Dashboard to track income, expenses, and savings with dynamic charts and category filters.",
-    imageUrl: "https://picsum.photos/seed/dashboard/300/200",
+    imagesrc: "/assets/dashboard.png", // Path from the public folder
     githubUrl: "https://github.com/your-username/financial-dashboard",
   },
   {
     title: "Quiz Application",
     description:
       "Interactive quiz app with timer, multiple-choice questions, score tracking, and real-time feedback.",
-    imageUrl: "https://picsum.photos/seed/quiz/300/200",
+    imagesrc: "/assets/quiz.png", // Path from the public folder
     githubUrl: "https://github.com/your-username/quiz-app",
   },
   {
     title: "Network Scanner Tool",
     description:
       "Command-line tool using Python to scan IP ranges and detect active hosts and open ports.",
-    imageUrl: "https://picsum.photos/seed/scanner/300/200",
+    imagesrc: "/assets/scanner.png", // Path from the public folder
     githubUrl: "https://github.com/your-username/network-scanner",
   },
   {
     title: "Task Management System",
     description:
       "A task organizer with user authentication, task creation, deadline notifications, and priority sorting.",
-    imageUrl: "https://picsum.photos/seed/taskmanager/300/200",
+    imagesrc: "/assets/taskmanager.png", // Path from the public folder
     githubUrl: "https://github.com/your-username/task-manager",
   },
 ];
@@ -88,7 +91,7 @@ const Projects = () => {
     if (isLoading) {
       if (navbar) navbar.style.display = "none";
     } else {
-      if (navbar) navbar.style.display = "flex"; // or block depending on your navbar style
+      if (navbar) navbar.style.display = "flex";
     }
   }, [isLoading]);
 
@@ -196,7 +199,7 @@ const Projects = () => {
                 className="project-image-container"
               >
                 <img
-                  src={project.imageUrl}
+                  src={project.imagesrc} // This works because the path is now correct
                   alt={`${project.title} screenshot`}
                   className="project-image"
                 />
