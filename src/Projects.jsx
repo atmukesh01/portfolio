@@ -2,53 +2,92 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import "./Projects.css";
 
-// We no longer import the images.
-// Instead, we use direct string paths to the 'public' folder.
-
-const projectsData = [
+// Section 1: Institution Projects Data
+const institutionProjectsData = [
   {
-    title: "Personal Portfolio Website",
+    title: "PERSONAL PORTFOLIO",
     description:
-      "A fully responsive portfolio site built with React to showcase work, skills, and contact information.",
-    imagesrc: "src/assets/portfolio.png", // Path from the public folder
+      "A fully responsive portfolio site built with React and Vite to showcase work, skills, and contact information.",
+    imagesrc: "src/assets/portfolio.png",
     githubUrl: "https://github.com/atmukesh01/portfolio",
   },
   {
-    title: "E-Commerce Platform",
+    title: "IMMEDIATE UPDATE BANKING",
     description:
-      "A full-stack e-commerce application with product listing, shopping cart, checkout, and payment integration.",
-    imagesrc: "/assets/ecommerce.png", // Path from the public folder
-    githubUrl: "https://github.com/your-username/ecommerce-platform",
+      "C++ project that simulates a real-time banking environment using an immediate update database modification approach.",
+    imagesrc: "src/assets/Banking.jpeg",
+    githubUrl: "https://github.com/atmukesh01/banking",
   },
   {
     title: "Financial Dashboard",
     description:
       "Dashboard to track income, expenses, and savings with dynamic charts and category filters.",
-    imagesrc: "/assets/dashboard.png", // Path from the public folder
-    githubUrl: "https://github.com/your-username/financial-dashboard",
+    imagesrc: "src/assets/track.jpeg",
+    githubUrl: "https://github.com/atmukesh01/Expense-monitor",
   },
   {
-    title: "Quiz Application",
+    title: "ONLINE MCQ QUIZ APPLICATION",
     description:
       "Interactive quiz app with timer, multiple-choice questions, score tracking, and real-time feedback.",
-    imagesrc: "/assets/quiz.png", // Path from the public folder
+    imagesrc: "/assets/quiz.png",
     githubUrl: "https://github.com/your-username/quiz-app",
   },
   {
-    title: "Network Scanner Tool",
+    title: "GAMEHUB (CONTRIBUTOR)",
     description:
       "Command-line tool using Python to scan IP ranges and detect active hosts and open ports.",
-    imagesrc: "/assets/scanner.png", // Path from the public folder
-    githubUrl: "https://github.com/your-username/network-scanner",
+    imagesrc: "/assets/scanner.png",
+    githubUrl: "https://github.com/Sandeepramasamy05/GAME-HUB",
+  },
+  
+];
+
+// Section 2: Industrial Projects Data (with placeholders)
+const industrialProjectsData = [
+  {
+    title: "E-commerce Platform",
+    description:
+      "A full-stack e-commerce site with product listings, a shopping cart, secure checkout, and user account management.",
+    imagesrc: "/assets/ecommerce.png",
+    githubUrl: "https://github.com/your-username/ecommerce-platform",
   },
   {
-    title: "Task Management System",
+    title: "Real-time Chat Application",
     description:
-      "A task organizer with user authentication, task creation, deadline notifications, and priority sorting.",
-    imagesrc: "/assets/taskmanager.png", // Path from the public folder
-    githubUrl: "https://github.com/your-username/task-manager",
+      "A chat application using WebSockets for instant messaging, user presence indicators, and multi-user group chats.",
+    imagesrc: "/assets/chatapp.png",
+    githubUrl: "https://github.com/your-username/chat-app",
+  },
+  {
+    title: "Cloud File Storage System",
+    description:
+      "A service for uploading, downloading, and sharing files securely, with folder organization and user authentication.",
+    imagesrc: "/assets/cloudstorage.png",
+    githubUrl: "https://github.com/your-username/cloud-storage",
+  },
+  {
+    title: "Weather Forecast App",
+    description:
+      "An application that fetches and displays current weather and future forecasts from a third-party weather API.",
+    imagesrc: "/assets/weatherapp.png",
+    githubUrl: "https://github.com/your-username/weather-app",
+  },
+  {
+    title: "Recipe Finder Application",
+    description:
+      "An app to search for recipes based on ingredients, view detailed instructions, and save favorite recipes to a personal list.",
+    imagesrc: "/assets/recipeapp.png",
+    githubUrl: "https://github.com/your-username/recipe-finder",
+  },
+  {
+    title: "Fitness Tracker Dashboard",
+    description:
+      "A web app to log workouts, track physical progress over time, and visualize fitness data with interactive charts.",
+    imagesrc: "/assets/fitnessapp.png",
+    githubUrl: "https://github.com/your-username/fitness-tracker",
   },
 ];
+
 
 const LoadingName = () => {
   const name = "MUKESH";
@@ -74,7 +113,7 @@ const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
   const canvasRef = useRef(null);
 
-  // Reset loading state and timer every time pathname is /projects
+  // This logic remains the same
   useEffect(() => {
     if (location.pathname === "/projects") {
       setIsLoading(true);
@@ -85,7 +124,7 @@ const Projects = () => {
     }
   }, [location.pathname]);
 
-  // Show/hide navbar based on isLoading state
+  // This logic remains the same
   useEffect(() => {
     const navbar = document.querySelector(".navbar");
     if (isLoading) {
@@ -95,7 +134,7 @@ const Projects = () => {
     }
   }, [isLoading]);
 
-  // Canvas animation effect, runs only when not loading
+  // This logic remains the same
   useEffect(() => {
     if (isLoading) return;
     const canvas = canvasRef.current;
@@ -184,13 +223,15 @@ const Projects = () => {
     return <LoadingName />;
   }
 
+  // UPDATED JSX to render two sections
   return (
     <>
       <canvas ref={canvasRef} className="web-canvas-full"></canvas>
       <main className="projects-main">
-        <h1 className="projects-header">My Projects</h1>
+        {/* Section 1: Institution Projects */}
+        <h2 className="projects-section-header">INSTITUTIONAL PROJECTS</h2>
         <div className="projects-container">
-          {projectsData.map((project, index) => (
+          {institutionProjectsData.map((project, index) => (
             <div key={index} className="project-card">
               <a
                 href={project.githubUrl}
@@ -199,7 +240,7 @@ const Projects = () => {
                 className="project-image-container"
               >
                 <img
-                  src={project.imagesrc} // This works because the path is now correct
+                  src={project.imagesrc}
                   alt={`${project.title} screenshot`}
                   className="project-image"
                 />
@@ -208,7 +249,35 @@ const Projects = () => {
                 </div>
               </a>
               <div className="project-content">
-                <h2 className="project-title">{project.title}</h2>
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Section 2: Industrial Projects */}
+        <h2 className="projects-section-header">INDUSTRIAL PROJECTS</h2>
+        <div className="projects-container">
+          {industrialProjectsData.map((project, index) => (
+            <div key={index} className="project-card">
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-image-container"
+              >
+                <img
+                  src={project.imagesrc}
+                  alt={`${project.title} screenshot`}
+                  className="project-image"
+                />
+                <div className="image-overlay">
+                  <span className="overlay-text">View on GitHub</span>
+                </div>
+              </a>
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
               </div>
             </div>
