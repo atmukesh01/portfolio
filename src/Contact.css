@@ -99,7 +99,7 @@
   stroke: #9ca3af; /* A subtle color for the icons */
 }
 
-/* --- NEW: Loading Styles --- */
+/* --- Loading Styles --- */
 .loading-container {
   height: 100vh;
   width: 100vw;
@@ -131,4 +131,44 @@
   0% { opacity: 0; transform: translateY(30px); }
   50% { opacity: 1; transform: translateY(-10px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+/*
+ =========================================
+   MOBILE RESPONSIVENESS (768px and below)
+ =========================================
+*/
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 1rem; /* Reduce page padding */
+  }
+
+  .contact-container {
+    /* Stack image and content vertically */
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .contact-left,
+  .contact-right {
+    /* Allow both sections to take full width */
+    flex-basis: auto;
+  }
+
+  .contact-left {
+    /* Prevent image from being too tall */
+    max-height: 250px;
+  }
+
+  .contact-right {
+    padding: 25px; /* Reduce content padding */
+  }
+
+  .contact-heading {
+    font-size: 2rem; /* Make heading smaller */
+  }
+  
+  .loading-name {
+    font-size: 3rem; /* Make loading text smaller */
+  }
 }

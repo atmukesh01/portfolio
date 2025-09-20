@@ -1,131 +1,166 @@
-/* General Body and Root Styles */
+/* --- General Body and Root Styles --- */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #000000;
+  background-color: #0f172a; /* Changed to a dark blue for consistency */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-y: auto;  /* Enable scrolling on viewport */
 }
 
-body > #root {
-  min-height: 100vh;
-}
-
-/* Navbar container */
+/* --- Vertical Sidebar Navbar --- */
 .navbar {
   position: fixed;
   top: 0;
   left: 0; 
   height: 100vh;
   width: 220px; 
-  background: rgba(3, 4, 7, 0.8);
-  backdrop-filter: blur(0px);
+  background: rgba(15, 23, 42, 0.8); /* Darker, less transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   color: #f8fafc;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Center items for a cleaner look */
   padding: 40px 0;
   z-index: 1000;
+  transition: width 0.3s ease, transform 0.3s ease; /* For responsive transition */
 }
 
-/* nav-right container */
+/* --- Navigation Links Container --- */
 .nav-right {
   display: flex;
   flex-direction: column;
-  gap: 28px; 
+  gap: 20px; /* Adjusted gap */
   width: 100%;
   align-items: center;
+  padding-top: 20px;
 }
 
-/* Updated nav link styles */
+/* --- Navigation Link Styles --- */
 .nav-right a {
-  color: #f8fafc;
+  color: #cbd5e1; /* Softer white for inactive links */
   text-decoration: none;
   font-weight: 600;
-  padding: 10px 22px;
+  font-size: 1rem;
+  width: 85%; /* Slightly narrower */
+  padding: 12px 20px;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
-  width: 90%;
-  
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 15px;
-  padding-left: 30px;
+  transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 }
 
 .nav-right a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
 }
 
 .nav-right a.active {
-  background-color: #05337c;
+  background-color: #2563eb; /* A brighter blue for active state */
   color: white;
+  padding-left: 25px; /* Indent active link */
 }
 
-/* Main content that occupies full width and scrolls with hidden scrollbar */
-.main-content {
-  padding-left: 260px; /* Leaves space for fixed navbar */
-  padding-right: 40px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  box-sizing: border-box;
-  
-  width: 100%;        /* Full viewport width */
-  max-width: none;    /* Remove max-width to allow full width */
-  min-height: 100vh;  /* Ensure it covers full viewport height */
-  
-  overflow-y: scroll; /* Enable scroll */
-  scrollbar-width: none; /* Firefox scrollbar hidden */
-  -ms-overflow-style: none; /* IE 10+ scrollbar hidden */
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.main-content::-webkit-scrollbar {
-  display: none;
-}
-
-/* Centering wrapper inside main-content */
-.main-content-inner {
-  max-width: 1200px;
-  margin: 0 auto;    /* Center content horizontally */
-}
-
-/* Section styling */
-section {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
-  
-  min-height: auto;
-  overflow: visible;
-}
-
-/* Resume Button Styles */
-.nav-right .resume-button {
+/* --- Resume Button Styles --- */
+.resume-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 70%;
-  padding: 12px 22px; 
-  background-color: #000000; 
+  width: 85%;
+  padding: 12px; 
+  background-color: #1e293b; 
   color: white; 
   font-weight: 600;
   text-decoration: none;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
+  margin-top: auto; /* Pushes the button to the bottom */
 }
 
-.nav-right .resume-button:hover {
-  background-color: #010102; 
+.resume-button:hover {
+  background-color: #2563eb; 
   transform: translateY(-2px); 
   box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4); 
+}
+
+/* --- Main Content Area --- */
+.main-content {
+  padding-left: 220px; /* Leaves space for fixed sidebar */
+  padding-top: 20px; /* Consistent top padding */
+  padding-bottom: 20px; /* Consistent bottom padding */
+  box-sizing: border-box;
+  min-height: 100vh;
+  transition: padding-left 0.3s ease; /* For responsive transition */
+}
+
+
+/*
+ =========================================
+   MOBILE RESPONSIVENESS (768px and below)
+ =========================================
+*/
+@media (max-width: 768px) {
+  /* --- Change sidebar to a bottom navbar --- */
+  .navbar {
+    top: auto; /* Unset top */
+    bottom: 0; /* Fix to bottom */
+    width: 100%;
+    height: 65px; /* Set a fixed height */
+    flex-direction: row; /* Arrange items horizontally */
+    justify-content: center;
+    padding: 0;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-right {
+    flex-direction: row; /* Links in a row */
+    justify-content: space-around; /* Distribute links evenly */
+    align-items: center;
+    gap: 0;
+    height: 100%;
+    padding-top: 0;
+  }
+
+  .nav-right a {
+    flex-direction: column; /* Stack icon and text vertically */
+    justify-content: center;
+    width: auto;
+    height: 100%;
+    padding: 8px;
+    font-size: 0.75rem; /* Smaller font size */
+    gap: 4px;
+    color: #94a3b8; /* Dim inactive icons slightly */
+  }
+
+  .nav-right a.active {
+    color: #3b82f6; /* Bright blue for active icon */
+    background-color: transparent; /* Remove background on active for bottom bar */
+    padding-left: 8px; /* Reset indent */
+  }
+  
+  /* Hide text labels for resume button and nav links on very small screens */
+  .resume-button,
+  .nav-right a span {
+     display: none;
+  }
+  
+  /* --- Adjust main content padding --- */
+  .main-content {
+    padding-left: 0; /* Remove side padding */
+    /* Add padding to the bottom to avoid content being hidden by the new bottom navbar */
+    padding-bottom: 80px; 
+  }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .nav-right a {
+        padding: 8px 5px; /* Tighter padding */
+    }
 }
