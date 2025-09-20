@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./Skillset.css";
+import "./skillset.css";
 
 const LoadingName = () => {
   const name = "Mukesh";
