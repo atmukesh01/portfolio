@@ -1,10 +1,11 @@
 /* --- General Body and Root Styles --- */
 html, body, #root {
-  height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #0f172a; /* Changed to a dark blue for consistency */
+  background-color: #0f172a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Allow the body to scroll naturally if content overflows */
+  overflow-x: hidden;
 }
 
 /* --- Vertical Sidebar Navbar --- */
@@ -14,24 +15,24 @@ html, body, #root {
   left: 0; 
   height: 100vh;
   width: 220px; 
-  background: rgba(15, 23, 42, 0.8); /* Darker, less transparent */
+  background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   color: #f8fafc;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items for a cleaner look */
+  align-items: center;
   padding: 40px 0;
   z-index: 1000;
-  transition: width 0.3s ease, transform 0.3s ease; /* For responsive transition */
+  transition: width 0.3s ease, transform 0.3s ease;
 }
 
 /* --- Navigation Links Container --- */
 .nav-right {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Adjusted gap */
+  gap: 20px;
   width: 100%;
   align-items: center;
   padding-top: 20px;
@@ -39,11 +40,11 @@ html, body, #root {
 
 /* --- Navigation Link Styles --- */
 .nav-right a {
-  color: #cbd5e1; /* Softer white for inactive links */
+  color: #cbd5e1;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  width: 85%; /* Slightly narrower */
+  width: 85%;
   padding: 12px 20px;
   border-radius: 8px;
   display: flex;
@@ -58,9 +59,9 @@ html, body, #root {
 }
 
 .nav-right a.active {
-  background-color: #2563eb; /* A brighter blue for active state */
+  background-color: #2563eb;
   color: white;
-  padding-left: 25px; /* Indent active link */
+  padding-left: 25px;
 }
 
 /* --- Resume Button Styles --- */
@@ -79,7 +80,7 @@ html, body, #root {
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
-  margin-top: auto; /* Pushes the button to the bottom */
+  margin-top: auto;
 }
 
 .resume-button:hover {
@@ -90,12 +91,10 @@ html, body, #root {
 
 /* --- Main Content Area --- */
 .main-content {
-  padding-left: 220px; /* Leaves space for fixed sidebar */
-  padding-top: 20px; /* Consistent top padding */
-  padding-bottom: 20px; /* Consistent bottom padding */
+  padding-left: 220px;
   box-sizing: border-box;
   min-height: 100vh;
-  transition: padding-left 0.3s ease; /* For responsive transition */
+  transition: padding-left 0.3s ease;
 }
 
 
@@ -107,11 +106,11 @@ html, body, #root {
 @media (max-width: 768px) {
   /* --- Change sidebar to a bottom navbar --- */
   .navbar {
-    top: auto; /* Unset top */
-    bottom: 0; /* Fix to bottom */
+    top: auto;
+    bottom: 0;
     width: 100%;
-    height: 65px; /* Set a fixed height */
-    flex-direction: row; /* Arrange items horizontally */
+    height: 65px;
+    flex-direction: row;
     justify-content: center;
     padding: 0;
     border-right: none;
@@ -119,8 +118,8 @@ html, body, #root {
   }
 
   .nav-right {
-    flex-direction: row; /* Links in a row */
-    justify-content: space-around; /* Distribute links evenly */
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     gap: 0;
     height: 100%;
@@ -128,23 +127,22 @@ html, body, #root {
   }
 
   .nav-right a {
-    flex-direction: column; /* Stack icon and text vertically */
+    flex-direction: column;
     justify-content: center;
     width: auto;
     height: 100%;
     padding: 8px;
-    font-size: 0.75rem; /* Smaller font size */
+    font-size: 0.75rem;
     gap: 4px;
-    color: #94a3b8; /* Dim inactive icons slightly */
+    color: #94a3b8;
   }
 
   .nav-right a.active {
-    color: #3b82f6; /* Bright blue for active icon */
-    background-color: transparent; /* Remove background on active for bottom bar */
-    padding-left: 8px; /* Reset indent */
+    color: #3b82f6;
+    background-color: transparent;
+    padding-left: 8px;
   }
   
-  /* Hide text labels for resume button and nav links on very small screens */
   .resume-button,
   .nav-right a span {
      display: none;
@@ -152,8 +150,7 @@ html, body, #root {
   
   /* --- Adjust main content padding --- */
   .main-content {
-    padding-left: 0; /* Remove side padding */
-    /* Add padding to the bottom to avoid content being hidden by the new bottom navbar */
+    padding-left: 0;
     padding-bottom: 80px; 
   }
 }
@@ -161,6 +158,6 @@ html, body, #root {
 /* Further adjustments for very small screens */
 @media (max-width: 480px) {
     .nav-right a {
-        padding: 8px 5px; /* Tighter padding */
+        padding: 8px 5px;
     }
 }

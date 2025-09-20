@@ -394,13 +394,15 @@ body {
   overflow: hidden; /* Prevent scrolling on the body */
 }
 
+/* --- Global & Background --- */
+
 .web-canvas-full-about {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place it behind all other content */
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -414,18 +416,12 @@ body {
   max-width: 800px;
   margin: 60px auto;
   padding: 40px 60px;
-  
-  /* Glass Effect */
   background: rgba(59, 130, 246, 0.15); 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  
   border-radius: 36px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    inset 0 2px 4px rgba(255, 255, 255, 0.1),
-    0 10px 30px rgba(0, 0, 0, 0.3);
-
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.3);
   color: #fff;
   text-align: center;
   z-index: 1;
@@ -451,10 +447,6 @@ body {
 }
 
 /* --- Main Content --- */
-.content-center {
-  max-width: 600px;
-}
-
 .content-center h1 {
   font-size: 2.7rem;
   font-weight: 800;
@@ -467,14 +459,14 @@ body {
   font-size: 1.2rem;
   line-height: 1.7;
   margin-bottom: 40px;
-  color: #e2e8f0; /* Lighter color for better readability */
+  color: #e2e8f0;
 }
 
 /* --- Social Icons --- */
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Reduced gap slightly */
+  gap: 30px;
 }
 
 .social-icons a {
@@ -486,9 +478,7 @@ body {
   border-radius: 50%;
   background: linear-gradient(145deg, #2f3347, #1c1f2b);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 
-    inset 0 1px 2px rgba(255, 255, 255, 0.1),
-    5px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -498,17 +488,16 @@ body {
   transform: scale(1.15) translateY(-5px);
 }
 
-.social-icons img {
+.social-icons svg {
   width: 32px;
   height: 32px;
-  /* Make icons white */
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s, transform 0.3s;
+  color: #fff;
+  transition: transform 0.3s, filter 0.3s;
 }
 
-.social-icons a:hover img {
+.social-icons a:hover svg {
   transform: scale(1.1);
-  filter: brightness(0) invert(1) drop-shadow(0 0 8px #fff);
+  filter: drop-shadow(0 0 8px #fff);
 }
 
 /* --- Loading Styles --- */
@@ -555,41 +544,36 @@ body {
 */
 @media (max-width: 768px) {
   .about-section {
-    width: 90%; /* Allow the card to be fluid */
+    width: 90%;
     padding: 30px;
-    margin-top: 80px; /* Add space from the top */
-    display: block; /* Change from flex to block */
+    margin: 20px auto; /* Adjust margin for scrollable layout */
+    display: block;
     text-align: center;
   }
 
-  /* --- Reposition the Profile Image --- */
   .profile-image.top-right {
-    position: relative; /* Change from absolute to relative */
+    position: relative;
     top: auto;
     right: auto;
-    /* Center the image */
     margin: 0 auto 30px auto;
     width: 150px;
     height: 150px;
   }
 
-  /* --- Adjust Typography --- */
   .content-center {
-    /* Ensure content is not constrained by the old layout */
     max-width: 100%;
     padding-right: 0;
   }
 
   .content-center h1 {
-    font-size: 2.2rem; /* Reduce heading size */
+    font-size: 2.2rem;
   }
 
   .content-center p {
-    font-size: 1rem; /* Reduce paragraph font size */
+    font-size: 1rem;
     margin-bottom: 30px;
   }
 
-  /* --- Adjust Social Icons --- */
   .social-icons {
     gap: 20px;
   }
@@ -599,8 +583,12 @@ body {
     height: 50px;
   }
 
-  .social-icons img {
+  .social-icons svg {
     width: 25px;
     height: 25px;
+  }
+  
+  .loading-name {
+    font-size: 3rem;
   }
 }
