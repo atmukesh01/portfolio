@@ -1,128 +1,133 @@
 /* --- Fullscreen Canvas Styling --- */
 .web-canvas-full {
-  position: fixed; /* Fixes it to the viewport */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Places it behind all other page content */
+  z-index: -1;
   pointer-events: none;
 }
 
-/* --- MODIFIED: Skillset Section as a "Glass" Panel --- */
-.skillset-section {
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 40px;
-  
-  /* New mild blue background */
-  background: rgba(59, 130, 246, 0.15); /* blue-400 at 15% opacity */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  
-  border-radius: 36px;
-  /* New convex shadow effect */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    inset 0 2px 4px rgba(255, 255, 255, 0.1), /* Top inner highlight */
-    0 10px 30px rgba(0, 0, 0, 0.3); /* Bottom outer shadow */
-
-  user-select: none;
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
-  overflow: hidden;
+/* --- Honeycomb Styles --- */
+.honeycomb-container {
+  display: flex;
+  flex-direction: column; /* Aligns heading and grid vertically */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-.skillset-section h2 {
+/* --- Heading Styles --- */
+.skills-heading {
   text-align: center;
-  color: #fff; /* White text for better contrast */
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2.6rem;
   font-weight: 700;
   letter-spacing: 2px;
-  margin-bottom: 40px; /* Increased bottom margin */
-  text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 50px; /* Space between heading and grid */
+  text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6; /* Glowing text effect */
 }
 
-/* --- MODIFIED: Skills Grid Layout --- */
-.skills-grid {
+
+.honeycomb-grid {
   display: grid;
-  /* This creates a grid with 6 equal-width columns */
-  grid-template-columns: repeat(6, 1fr);
-  justify-items: center;
-  gap: 28px;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  /* --- MODIFIED: Reduced gap for closer spacing --- */
+  gap: 4px;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* --- MODIFIED: Skill Logo Box Style --- */
-.skill-logo-box {
+.honeycomb-cell {
   position: relative;
-  width: 75px;
-  height: 75px;
-  /* New convex background and shadow */
+  aspect-ratio: 1 / 0.866;
   background: radial-gradient(circle at 30% 30%, #4a5568, #1a202c);
-  border-radius: 22px; /* Softer corner */
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.1), /* Inner top highlight */
-    0 8px 15px rgba(0, 0, 0, 0.4); /* Main outer shadow */
+  transition: transform 0.25s ease-out, filter 0.25s ease-out;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.6));
+}
 
+/* --- Glowing Border Pseudo-Element --- */
+.honeycomb-cell::before {
+  content: '';
+  position: absolute;
+  /* Inset makes it slightly larger than the parent, creating a border */
+  inset: -2px; 
+  background: rgba(96, 165, 250, 0.7);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  z-index: -1;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.25s ease-out;
+}
+
+.honeycomb-cell:nth-of-type(even) {
+  /* --- MODIFIED: Adjusted translateY to match the new gap (4px / 2 = 2px) --- */
+  transform: translateY(calc(50% + 2px));
+}
+
+.honeycomb-cell:hover {
+  transform: scale(1.15); 
+  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.9));
+
+  &:nth-of-type(even) {
+    /* --- MODIFIED: Also update the hover transform to keep alignment --- */
+    transform: translateY(calc(50% + 2px)) scale(1.15);
+  }
+  
+  z-index: 10;
+}
+
+/* --- Show the glowing border on hover --- */
+.honeycomb-cell:hover::before {
+  opacity: 1;
+}
+
+.honeycomb-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.22s, box-shadow 0.22s;
-  cursor: pointer;
-  z-index: 2;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.skill-logo-box:hover {
-  transform: scale(1.12) translateY(-7px);
-  box-shadow: 0 8px 36px #fad400fd, 0 0 40px #fae104f6;
-  z-index: 3;
+.honeycomb-content img {
+  width: 45%;
+  height: auto;
+  margin-bottom: 8px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
 }
 
-/* --- MODIFIED: Image size within the box --- */
-.skill-logo-box img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  opacity: 0.97;
-  transition: filter 0.18s, opacity 0.18s;
-  filter: drop-shadow(0 0 6px #326efaaa);
-}
-
-.skill-logo-box:hover img {
+.honeycomb-cell:hover img {
   opacity: 1;
-  filter: drop-shadow(0 0 14px #64b5ff);
 }
 
-/* --- Tooltip Badge --- */
-.skill-badge {
-  display: none;
-  position: absolute;
-  bottom: -35px; /* Adjusted for smaller box size */
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ffd902f6;
+.skill-name {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
-  padding: 7px 14px;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 13px;
-  box-shadow: 0 5px 14px #343b08b0;
-  white-space: nowrap;
-  pointer-events: none;
+  font-size: 0.9rem;
+  font-weight: 600;
   opacity: 0;
-  transition: opacity 0.13s, bottom 0.17s cubic-bezier(.57,1.67,.22,.92);
-  z-index: 5;
+  transform: translateY(10px);
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-.skill-logo-box:hover .skill-badge {
-  display: block;
+.honeycomb-cell:hover .skill-name {
   opacity: 1;
-  bottom: -45px; /* Adjusted for smaller box size */
+  transform: translateY(0);
 }
 
 /* --- Loading Styles --- */
@@ -158,4 +163,3 @@
   50% { opacity: 1; transform: translateY(-10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-

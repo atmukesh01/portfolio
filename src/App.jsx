@@ -9,10 +9,16 @@ import "./App.css";
 
 const AppContent = () => {
   const location = useLocation();
-  const [isPageLoading, setIsPageLoading] = useState(false);
 
+  // --- CHANGE 1: Add '/contact' to the initial state check ---
+  const [isPageLoading, setIsPageLoading] = useState(() => {
+    const initialPath = window.location.pathname;
+    return initialPath === '/about' || initialPath === '/skillset' || initialPath === '/contact' || initialPath === '/';
+  });
+
+  // --- CHANGE 2: Add '/contact' to the useEffect check ---
   useEffect(() => {
-    if (location.pathname === '/about' || location.pathname === '/skillset') {
+    if (location.pathname === '/about' || location.pathname === '/skillset' || location.pathname === '/contact') {
       setIsPageLoading(true);
     }
   }, [location]);
@@ -25,7 +31,6 @@ const AppContent = () => {
     <>
       {!isPageLoading && (
         <header className="navbar">
-          {/* --- UPDATED: The resume button is now inside the nav block --- */}
           <nav className="nav-right">
             <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : undefined)}>
               <FaUser /> About
@@ -39,8 +44,6 @@ const AppContent = () => {
             <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : undefined)}>
               <FaEnvelope /> Contact
             </NavLink>
-            
-            {/* The resume button has been moved here */}
             <a 
               href="src/assets/Resume.pdf" 
               target="_blank" 
@@ -65,7 +68,11 @@ const AppContent = () => {
             element={<Skillset isPageLoading={isPageLoading} onLoadingComplete={handleLoadingComplete} />}
           />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
+          {/* --- CHANGE 3: Pass loading props to the Contact route --- */}
+          <Route 
+            path="/contact" 
+            element={<Contact isPageLoading={isPageLoading} onLoadingComplete={handleLoadingComplete} />} 
+          />
           <Route path="*" element={<Navigate to="/about" replace />} />
         </Routes>
       </main>

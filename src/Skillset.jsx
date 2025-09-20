@@ -32,6 +32,7 @@ const skills = [
     { name: "React", src: "https://cdn.jsdelivr.net/npm/devicon/icons/react/react-original.svg" },
     { name: "Node.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nodejs/nodejs-original.svg" },
     { name: "Express", src: "https://cdn.jsdelivr.net/npm/devicon/icons/express/express-original.svg" },
+    { name: "Django", src: "https://cdn.jsdelivr.net/npm/devicon/icons/django/django-plain.svg" },
     { name: "Next.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nextjs/nextjs-original.svg" },
     { name: "Git", src: "https://cdn.jsdelivr.net/npm/devicon/icons/git/git-original.svg" },
     { name: "GitHub", src: "https://cdn.jsdelivr.net/npm/devicon/icons/github/github-original.svg" },
@@ -40,6 +41,7 @@ const skills = [
     { name: "Oracle", src: "https://cdn.jsdelivr.net/npm/devicon/icons/oracle/oracle-original.svg" },
     { name: "MongoDB", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mongodb/mongodb-original.svg" }
 ];
+
 
 const Skillset = ({ isPageLoading, onLoadingComplete }) => {
   const canvasRef = useRef(null);
@@ -92,17 +94,15 @@ const Skillset = ({ isPageLoading, onLoadingComplete }) => {
         let dy = mouse.y - p.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
         
-        // --- SMOOTHER REPELLING LOGIC ---
         const maxDistance = 200;
         if (distance < maxDistance) {
-            const force = (maxDistance - distance) / maxDistance; // Easing based on distance
+            const force = (maxDistance - distance) / maxDistance;
             const forceDirectionX = dx / distance;
             const forceDirectionY = dy / distance;
-            p.x -= forceDirectionX * force * 2.5; // Apply stronger force when closer
+            p.x -= forceDirectionX * force * 2.5;
             p.y -= forceDirectionY * force * 2.5;
         } else if (p.x !== p.baseX || p.y !== p.baseY) {
-            // --- SMOOTHER RETURN LOGIC ---
-            p.x -= (p.x - p.baseX) / 30; // Slower, more graceful return
+            p.x -= (p.x - p.baseX) / 30;
             p.y -= (p.y - p.baseY) / 30;
         }
         
@@ -139,6 +139,7 @@ const Skillset = ({ isPageLoading, onLoadingComplete }) => {
     };
   }, [isPageLoading]);
 
+
   return (
     <>
       {isPageLoading ? (
@@ -146,17 +147,19 @@ const Skillset = ({ isPageLoading, onLoadingComplete }) => {
       ) : (
         <>
           <canvas ref={canvasRef} className="web-canvas-full"></canvas>
-          <section className="skillset-section">
-            <h2>LANGUAGES AND TOOLS</h2>
-            <div className="skills-grid">
+          <div className="honeycomb-container">
+            <h2 className="skills-heading">Languages and Tools</h2>
+            <div className="honeycomb-grid">
               {skills.map(({ src, name }, idx) => (
-                <div className="skill-logo-box" key={idx}>
-                  <img src={src} alt={name} />
-                  <span className="skill-badge">{name}</span>
+                <div className="honeycomb-cell" key={idx}>
+                  <div className="honeycomb-content">
+                    <img src={src} alt={name} />
+                    <p className="skill-name">{name}</p>
+                  </div>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
         </>
       )}
     </>
@@ -164,4 +167,3 @@ const Skillset = ({ isPageLoading, onLoadingComplete }) => {
 };
 
 export default Skillset;
-

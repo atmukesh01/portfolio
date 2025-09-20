@@ -1,0 +1,134 @@
+/* --- Fullscreen Canvas Styling (Same as before) --- */
+.web-canvas-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.contact-container {
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  
+  /* Glass effect */
+  background: rgba(17, 25, 40, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  overflow: hidden;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.contact-left {
+  flex-basis: 40%;
+  overflow: hidden;
+}
+
+.contact-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  display: block;
+}
+
+.contact-right {
+  flex-basis: 60%;
+  padding: 40px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.7);
+}
+
+.contact-subheading {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d1d5db; /* A lighter gray for subheading */
+  margin-bottom: 30px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  text-decoration: none;
+  color: #f3f4f6;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.contact-link-item:hover {
+  background-color: rgba(96, 165, 250, 0.2);
+  transform: translateY(-2px);
+}
+
+.contact-link-item svg {
+  width: 24px;
+  height: 24px;
+  stroke: #9ca3af; /* A subtle color for the icons */
+}
+
+/* --- NEW: Loading Styles --- */
+.loading-container {
+  height: 100vh;
+  width: 100vw;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 100000;
+  overflow: hidden;
+}
+.loading-name {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #2563eb;
+  letter-spacing: 0.3em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  user-select: none;
+  display: flex;
+  gap: 0.2em;
+}
+.loading-letter {
+  opacity: 0;
+  animation: bounceFade 1s forwards;
+}
+@keyframes bounceFade {
+  0% { opacity: 0; transform: translateY(30px); }
+  50% { opacity: 1; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

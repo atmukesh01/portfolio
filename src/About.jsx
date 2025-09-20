@@ -3,7 +3,7 @@ import "./About.css";
 
 // --- CONSTANTS ---
 const profileImage = "/src/assets/blr.jpg";
-const linkedInUrl = "https://www.linkedin.com/in/yourprofile";
+const linkedInUrl = "https://www.linkedin.com/in/mukesh-t-b1500a31b/";
 const githubUrl = "https://github.com/atmukesh01";
 const leetCodeUrl = "https://leetcode.com/Mukesh036";
 
