@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./about.css";
 
 // --- CONSTANTS ---
-const profileImage = "/src/assets/blr.jpg";
+const profileImage = "assets/blr.jpg";
 const linkedInUrl = "https://www.linkedin.com/in/mukesh-t-b1500a31b/";
 const githubUrl = "https://github.com/atmukesh01";
 const leetCodeUrl = "https://leetcode.com/Mukesh036";
