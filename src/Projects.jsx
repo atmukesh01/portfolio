@@ -8,21 +8,21 @@ const institutionProjectsData = [
     title: "PERSONAL PORTFOLIO",
     description:
       "A fully responsive portfolio site built with React and Vite to showcase work, skills, and contact information.",
-    imagesrc: "src/assets/portfolio.png",
+    imagesrc: "assets/portfolio.png",
     githubUrl: "https://github.com/atmukesh01/portfolio",
   },
   {
     title: "IMMEDIATE UPDATE BANKING",
     description:
       "C++ project that simulates a real-time banking environment using an immediate update database modification approach.",
-    imagesrc: "src/assets/Banking.jpeg",
+    imagesrc: "assets/Banking.jpeg",
     githubUrl: "https://github.com/atmukesh01/banking",
   },
   {
     title: "Financial Dashboard",
     description:
       "Dashboard to track income, expenses, and savings with dynamic charts and category filters.",
-    imagesrc: "src/assets/track.jpeg",
+    imagesrc: "assets/track.jpeg",
     githubUrl: "https://github.com/atmukesh01/Expense-monitor",
   },
   {
