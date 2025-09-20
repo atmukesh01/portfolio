@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./About.css";
+import "./about.css";
 
 // --- CONSTANTS ---
 const profileImage = "/src/assets/blr.jpg";
