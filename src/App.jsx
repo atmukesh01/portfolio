@@ -45,7 +45,7 @@ const AppContent = () => {
               <FaEnvelope /> Contact
             </NavLink>
             <a 
-              href="src/assets/Resume.pdf" 
+              href="assets/Resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="resume-button"

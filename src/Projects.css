@@ -149,12 +149,14 @@
 }
 
 .loading-name {
-  font-size: 5rem;
+  font-size: 10vw;
   font-weight: 900;
   color: #3b82f6;
   letter-spacing: 0.2em;
   user-select: none;
   display: flex;
+  letter-spacing: 0.1em;
+  gap: 0.1em;
 }
 
 .loading-letter {

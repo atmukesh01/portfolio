@@ -4,7 +4,6 @@ html, body, #root {
   padding: 0;
   background-color: #0f172a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Allow the body to scroll naturally if content overflows */
   overflow-x: hidden;
 }
 
@@ -28,7 +27,8 @@ html, body, #root {
   transition: width 0.3s ease, transform 0.3s ease;
 }
 
-/* --- Navigation Links Container --- */
+/* ... other navbar styles ... */
+
 .nav-right {
   display: flex;
   flex-direction: column;
@@ -38,7 +38,6 @@ html, body, #root {
   padding-top: 20px;
 }
 
-/* --- Navigation Link Styles --- */
 .nav-right a {
   color: #cbd5e1;
   text-decoration: none;
@@ -64,7 +63,6 @@ html, body, #root {
   padding-left: 25px;
 }
 
-/* --- Resume Button Styles --- */
 .resume-button {
   display: flex;
   align-items: center;
@@ -95,6 +93,15 @@ html, body, #root {
   box-sizing: border-box;
   min-height: 100vh;
   transition: padding-left 0.3s ease;
+
+  /* --- ADD THESE RULES TO HIDE THE SCROLLBAR --- */
+  overflow-y: scroll; /* Ensure it's scrollable */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.main-content::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
 
@@ -104,7 +111,7 @@ html, body, #root {
  =========================================
 */
 @media (max-width: 768px) {
-  /* --- Change sidebar to a bottom navbar --- */
+  /* ... mobile styles ... */
   .navbar {
     top: auto;
     bottom: 0;
@@ -148,14 +155,12 @@ html, body, #root {
      display: none;
   }
   
-  /* --- Adjust main content padding --- */
   .main-content {
     padding-left: 0;
     padding-bottom: 80px; 
   }
 }
 
-/* Further adjustments for very small screens */
 @media (max-width: 480px) {
     .nav-right a {
         padding: 8px 5px;
