@@ -29,14 +29,14 @@ const institutionProjectsData = [
     title: "ONLINE MCQ QUIZ APPLICATION",
     description:
       "Interactive quiz app with timer, multiple-choice questions, score tracking, and real-time feedback.",
-    imagesrc: "/assets/quiz.png",
-    githubUrl: "https://github.com/your-username/quiz-app",
+    imagesrc: "/assets/mcq.png",
+    githubUrl: "https://github.com/atmukesh01/Online-MCQ",
   },
   {
     title: "GAMEHUB (CONTRIBUTOR)",
     description:
-      "Command-line tool using Python to scan IP ranges and detect active hosts and open ports.",
-    imagesrc: "/assets/scanner.png",
+      "GameHub is a desktop-based Java application that acts as a central platform to play multiple mini-games in one place.It provides a simple, interactive GUI where users can switch between games seamlessly. Built using Java Swing, it serves as an all-in-one casual gaming application..",
+    imagesrc: "/assets/gamehub.jpg",
     githubUrl: "https://github.com/Sandeepramasamy05/GAME-HUB",
   },
   
@@ -45,20 +45,20 @@ const institutionProjectsData = [
 // Section 2: Industrial Projects Data (with placeholders)
 const industrialProjectsData = [
   {
-    title: "E-commerce Platform",
+    title: " KSA E-Commerce Platform",
     description:
-      "A full-stack e-commerce site with product listings, a shopping cart, secure checkout, and user account management.",
-    imagesrc: "/assets/ecommerce.png",
-    githubUrl: "https://github.com/your-username/ecommerce-platform",
+      "An e-commerce platform created for an oil manufacturing industry. Helps in showcasing the company's products and also allows the customers to buy edible oil through the website. Once the customer had submiited the address details from the cart the details are stored as a csv file including the payment details..",
+    imagesrc: "/assets/ksa.png",
+    githubUrl: "https://github.com/atmukesh01/KSA-E-commerce-",
   },
   {
-    title: "Real-time Chat Application",
+    title: "Engineering model optimization tool",
     description:
-      "A chat application using WebSockets for instant messaging, user presence indicators, and multi-user group chats.",
-    imagesrc: "/assets/chatapp.png",
-    githubUrl: "https://github.com/your-username/chat-app",
+      "This tool is a Python-based software application that uses machine learning to automatically find the optimal design parameters for engineering models. It intelligently explores a model's design space to improve performance, reduce costs, and accelerate the development cycle, replacing slow and manual trial-and-error methods..",
+    imagesrc: "/assets/EMOT.png",
+    githubUrl: "https://github.com/atmukesh01/EMOT",
   },
-  {
+  /*{
     title: "Cloud File Storage System",
     description:
       "A service for uploading, downloading, and sharing files securely, with folder organization and user authentication.",
@@ -85,7 +85,7 @@ const industrialProjectsData = [
       "A web app to log workouts, track physical progress over time, and visualize fitness data with interactive charts.",
     imagesrc: "/assets/fitnessapp.png",
     githubUrl: "https://github.com/your-username/fitness-tracker",
-  },
+  }*/,
 ];
 
 
