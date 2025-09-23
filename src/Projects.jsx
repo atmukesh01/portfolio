@@ -52,9 +52,9 @@ const industrialProjectsData = [
     githubUrl: "https://github.com/atmukesh01/KSA-E-commerce-",
   },
   {
-    title: "Engineering model optimization tool",
+    title: "Process and production optimization tool",
     description:
-      "This tool is a Python-based software application that uses machine learning to automatically find the optimal design parameters for engineering models. It intelligently explores a model's design space to improve performance, reduce costs, and accelerate the development cycle, replacing slow and manual trial-and-error methods..",
+      "A machine learning model that predicts final product quality based on real-time process parameters like temperature, pressure, and speed., thereby reducing material waste, minimizing defects, and increasing overall production efficiency. It's a practical application of predictive analytics to achieve tangible improvements on the factory floor..",
     imagesrc: "/assets/EMOT.png",
     githubUrl: "https://github.com/atmukesh01/EMOT",
   },
