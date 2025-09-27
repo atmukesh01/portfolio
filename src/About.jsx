@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import "./about.css";
 
-// --- CONSTANTS ---
 const profileImage = "assets/blr.jpg";
 const linkedInUrl = "https://www.linkedin.com/in/mukesh-t-b1500a31b/";
 const githubUrl = "https://github.com/atmukesh01";
 const leetCodeUrl = "https://leetcode.com/Mukesh036";
 
-// --- LOADING COMPONENT ---
 const LoadingName = () => {
   const name = "Mukesh";
   return (
@@ -23,7 +21,6 @@ const LoadingName = () => {
   );
 };
 
-// --- MAIN ABOUT COMPONENT ---
 const About = ({ isPageLoading, onLoadingComplete }) => {
   const canvasRef = useRef(null);
 
@@ -54,7 +51,6 @@ const About = ({ isPageLoading, onLoadingComplete }) => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       particles.length = 0;
-      // Use more particles for the larger area
       for (let i = 0; i < 120; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -136,7 +132,6 @@ const About = ({ isPageLoading, onLoadingComplete }) => {
         <LoadingName />
       ) : (
         <>
-          {/* CHANGE: Canvas is now outside the section for fullscreen */}
           <canvas ref={canvasRef} className="web-canvas-full-about"></canvas>
           <section className="about-section" id="about">
             <img src={profileImage} alt="profile" className="profile-image top-right" />

@@ -16,9 +16,7 @@ body > #root {
   flex-direction: column;
 }
 
-/* --- Background --- */
 
-/* Fullscreen animated gradient background behind all content */
 #animated-bg {
   position: fixed;
   top: 0; left: 0;
@@ -30,16 +28,13 @@ body > #root {
   z-index: 0;
 }
 
-/* Animated gradient keyframes */
+
 @keyframes hdGradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* --- Navigation Bar --- */
-
-/* Navbar fixed at top */
 .navbar {
  
   position: fixed;
@@ -64,7 +59,7 @@ body > #root {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 20px; /* This creates consistent space between links */
+  gap: 20px;
 }
 
 .nav-right a {
@@ -86,13 +81,12 @@ body > #root {
 
 .nav-right a.active,
 .nav-right a:hover {
-  background-color: #2563eb; /* Bright blue background */
+  background-color: #2563eb; 
   color: white;
-  transform: scale(1.05); /* EDIT: Reduced scale for a smoother hover effect */
+  transform: scale(1.05); 
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
 }
 
-/* Animated underline on hover */
 .nav-right a::after {
   content: "";
   position: absolute;
@@ -109,10 +103,6 @@ body > #root {
   width: 80%;
   left: 10%;
 }
-
-
-/* --- Main Content & About Section --- */
-
 .main-content {
   position: fixed;
   top: 0; left: 0;
@@ -149,7 +139,6 @@ body > #root {
 }
 
 
-/* --- Profile Image --- */
 
 .profile-image {
   width: 180px;
@@ -165,8 +154,6 @@ body > #root {
   transform: scale(1.05);
   box-shadow: 0 0 40px #3b82f6ff, 0 0 80px rgb(229, 231, 235);
 }
-
-/* Profile image fixed top-right in About */
 .profile-image.top-right {
   position: absolute;
   top: 36px;
@@ -182,9 +169,6 @@ body > #root {
   transform: scale(1.5);
   box-shadow: 0 0 35px black, 0 0 70px black ;
 }
-
-
-/* --- Content & Social Icons --- */
 
 .content-center {
   max-width: 600px;
@@ -238,10 +222,6 @@ body > #root {
   filter: drop-shadow(0 0 4px #fff);
 }
 
-
-/* --- Loading Animations --- */
-
-/* FIX: Removed duplicate rule and kept this single definition */
 .loading-container {
   height: 100vh;
   width: 100vw;
@@ -303,7 +283,7 @@ body > #root {
 
 .loading-name.fade-out {
   animation: fadeOut 1s forwards;
-  animation-delay: 1.2s; /* starts after bounceFade animations */
+  animation-delay: 1.2s; 
 }
 
 @keyframes bounceFade {
@@ -325,33 +305,24 @@ body > #root {
   from { opacity: 1; }
   to { opacity: 0; }
 }
-/* This styles the container that holds your items */
+
 .card-container {
-  /* Step 1: Use Flexbox to arrange the items */
   display: flex;
-  
-  /* Step 2: Define the space between the items */
   gap: 20px; 
 }
-
-/* This styles the individual items */
 .card {
-  width: 150px;       /* Example width */
-  height: 200px;      /* Example height */
+  width: 150px;       
+  height: 200px;      
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-  /* Step 3: Add a transition for a smooth animation */
   transition: transform 0.3s ease;
 }
 
-/* This is the hover effect */
 .card:hover {
-  /* Step 4: Scale the item up on hover */
+
   transform: scale(10.1);
-  
-  /* Optional: Keeps the hovered card on top of the others */
   z-index: 10;
 }
 #animated-bg::before {
@@ -366,33 +337,26 @@ body > #root {
   pointer-events: none;
   z-index: 1;
 
-  /* UPDATED: Changed animation name */
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
-/* UPDATED: Renamed and modified the animation to include the blue glow */
 @keyframes pulseGlow {
   0%, 100% {
     opacity: 0.6;
-    /* Standard blue glow */
     filter: drop-shadow(0 0 7px rgba(37, 99, 235, 0.5));
   }
   50% {
     opacity: 0.3;
-    /* Brighter, more intense blue glow */
     filter: drop-shadow(0 0 14px rgba(37, 99, 235, 0.8));
   }
 }
-/* --- Canvas Styling --- */
-/* --- Fullscreen Canvas Styling --- */
-/* --- Global & Background --- */
+
 body {
   background: #0f172a;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow: hidden; /* Prevent scrolling on the body */
+  overflow: hidden;
 }
 
-/* --- Global & Background --- */
 
 .web-canvas-full-about {
   position: fixed;
@@ -404,7 +368,6 @@ body {
   pointer-events: none;
 }
 
-/* --- About Section Container --- */
 .about-section {
   display: flex;
   flex-direction: column;
@@ -425,7 +388,6 @@ body {
   z-index: 1;
 }
 
-/* --- Profile Image --- */
 .profile-image.top-right {
   position: absolute;
   top: 36px;
@@ -444,7 +406,6 @@ body {
   box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
 }
 
-/* --- Main Content --- */
 .content-center h1 {
   font-size: 2.7rem;
   font-weight: 800;
@@ -460,7 +421,6 @@ body {
   color: #e2e8f0;
 }
 
-/* --- Social Icons --- */
 .social-icons {
   display: flex;
   justify-content: center;
@@ -498,7 +458,6 @@ body {
   filter: drop-shadow(0 0 8px #fff);
 }
 
-/* --- Loading Styles --- */
 .loading-container {
   height: 100vh;
   width: 100vw;
@@ -535,16 +494,12 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/*
- =========================================
-   MOBILE RESPONSIVENESS (768px and below)
- =========================================
-*/
+
 @media (max-width: 768px) {
   .about-section {
     width: 90%;
     padding: 30px;
-    margin: 20px auto; /* Adjust margin for scrollable layout */
+    margin: 20px auto; 
     display: block;
     text-align: center;
   }
