@@ -144,7 +144,7 @@ const Contact = ({ isPageLoading, onLoadingComplete }) => {
         <div className="contact-right">
           <h2 className="contact-heading">Get in Touch</h2>
           <p className="contact-subheading">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            I'm always open to discuss new projects, creative ideas, or opportunities to be part of your visions.
           </p>
           <div className="contact-links">
             <a href="mailto:at.mukesh01@gmail.com" className="contact-link-item">
