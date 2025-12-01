@@ -136,7 +136,7 @@ const Contact = ({ isPageLoading, onLoadingComplete }) => {
       <div className="contact-container">
         <div className="contact-left">
           <img 
-            src="assets/profile.jpg" 
+            src="assets/profile3.jpg" 
             alt="Profile" 
             className="contact-image"
           />
