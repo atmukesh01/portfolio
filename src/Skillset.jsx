@@ -34,7 +34,6 @@ const skills = [
   { name: "Linux", src: "https://cdn.jsdelivr.net/npm/devicon/icons/linux/linux-original.svg" },
   { name: "MySQL", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mysql/mysql-original.svg" },
   { name: "Oracle", src: "https://cdn.jsdelivr.net/npm/devicon/icons/oracle/oracle-original.svg" },
-  { name: "MongoDB", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mongodb/mongodb-original.svg" }
 ];
 
 
