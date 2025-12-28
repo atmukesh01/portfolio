@@ -17,29 +17,24 @@ const LoadingName = () => {
 };
 
 const skills = [
-    { name: "C", src: "https://cdn.jsdelivr.net/npm/devicon/icons/c/c-original.svg" },
-    { name: "C++", src: "https://cdn.jsdelivr.net/npm/devicon/icons/cplusplus/cplusplus-original.svg" },
-    { name: "HTML", src: "https://cdn.jsdelivr.net/npm/devicon/icons/html5/html5-original.svg" },
-    { name: "CSS", src: "https://cdn.jsdelivr.net/npm/devicon/icons/css3/css3-original.svg" },
-    { name: "JavaScript", src: "https://cdn.jsdelivr.net/npm/devicon/icons/javascript/javascript-original.svg" },
-    { name: "PHP", src: "https://cdn.jsdelivr.net/npm/devicon/icons/php/php-original.svg" },
-    { name: "Python", src: "https://cdn.jsdelivr.net/npm/devicon/icons/python/python-original.svg" },
-    { name: "Java", src: "https://cdn.jsdelivr.net/npm/devicon/icons/java/java-original.svg" },
-    { name: "TypeScript", src: "https://cdn.jsdelivr.net/npm/devicon/icons/typescript/typescript-original.svg" },
-    { name: "Bootstrap", src: "https://cdn.jsdelivr.net/npm/devicon/icons/bootstrap/bootstrap-original.svg" },
-    { name: "Flask", src: "https://cdn.jsdelivr.net/npm/devicon/icons/flask/flask-original.svg" },
-    { name: "Angular", src: "https://cdn.jsdelivr.net/npm/devicon/icons/angular/angular-original.svg" },
-    { name: "React", src: "https://cdn.jsdelivr.net/npm/devicon/icons/react/react-original.svg" },
-    { name: "Node.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "Express", src: "https://cdn.jsdelivr.net/npm/devicon/icons/express/express-original.svg" },
-    { name: "Django", src: "https://cdn.jsdelivr.net/npm/devicon/icons/django/django-plain.svg" },
-    { name: "Next.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "Git", src: "https://cdn.jsdelivr.net/npm/devicon/icons/git/git-original.svg" },
-    { name: "GitHub", src: "https://cdn.jsdelivr.net/npm/devicon/icons/github/github-original.svg" },
-    { name: "Linux", src: "https://cdn.jsdelivr.net/npm/devicon/icons/linux/linux-original.svg" },
-    { name: "MySQL", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mysql/mysql-original.svg" },
-    { name: "Oracle", src: "https://cdn.jsdelivr.net/npm/devicon/icons/oracle/oracle-original.svg" },
-    { name: "MongoDB", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mongodb/mongodb-original.svg" }
+  { name: "C++", src: "https://cdn.jsdelivr.net/npm/devicon/icons/cplusplus/cplusplus-original.svg" },
+  { name: "HTML", src: "https://cdn.jsdelivr.net/npm/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS", src: "https://cdn.jsdelivr.net/npm/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", src: "https://cdn.jsdelivr.net/npm/devicon/icons/javascript/javascript-original.svg" },
+  { name: "Python", src: "https://cdn.jsdelivr.net/npm/devicon/icons/python/python-original.svg" },
+  { name: "Java", src: "https://cdn.jsdelivr.net/npm/devicon/icons/java/java-original.svg" },
+  { name: "Bootstrap", src: "https://cdn.jsdelivr.net/npm/devicon/icons/bootstrap/bootstrap-original.svg" },
+  { name: "Flask", src: "https://cdn.jsdelivr.net/npm/devicon/icons/flask/flask-original.svg" },
+  { name: "Angular", src: "https://cdn.jsdelivr.net/npm/devicon/icons/angular/angular-original.svg" },
+  { name: "React", src: "https://cdn.jsdelivr.net/npm/devicon/icons/react/react-original.svg" },
+  { name: "Node.js", src: "https://cdn.jsdelivr.net/npm/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "Django", src: "https://cdn.jsdelivr.net/npm/devicon/icons/django/django-plain.svg" },
+  { name: "Git", src: "https://cdn.jsdelivr.net/npm/devicon/icons/git/git-original.svg" },
+  { name: "GitHub", src: "https://cdn.jsdelivr.net/npm/devicon/icons/github/github-original.svg" },
+  { name: "Linux", src: "https://cdn.jsdelivr.net/npm/devicon/icons/linux/linux-original.svg" },
+  { name: "MySQL", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mysql/mysql-original.svg" },
+  { name: "Oracle", src: "https://cdn.jsdelivr.net/npm/devicon/icons/oracle/oracle-original.svg" },
+  { name: "MongoDB", src: "https://cdn.jsdelivr.net/npm/devicon/icons/mongodb/mongodb-original.svg" }
 ];
 
 
@@ -93,19 +88,19 @@ const Skillset = ({ isPageLoading, onLoadingComplete }) => {
         let dx = mouse.x - p.x;
         let dy = mouse.y - p.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         const maxDistance = 200;
         if (distance < maxDistance) {
-            const force = (maxDistance - distance) / maxDistance;
-            const forceDirectionX = dx / distance;
-            const forceDirectionY = dy / distance;
-            p.x -= forceDirectionX * force * 2.5;
-            p.y -= forceDirectionY * force * 2.5;
+          const force = (maxDistance - distance) / maxDistance;
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          p.x -= forceDirectionX * force * 2.5;
+          p.y -= forceDirectionY * force * 2.5;
         } else if (p.x !== p.baseX || p.y !== p.baseY) {
-            p.x -= (p.x - p.baseX) / 30;
-            p.y -= (p.y - p.baseY) / 30;
+          p.x -= (p.x - p.baseX) / 30;
+          p.y -= (p.y - p.baseY) / 30;
         }
-        
+
         ctx.fillStyle = "rgba(80, 80, 80, 0.8)";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
