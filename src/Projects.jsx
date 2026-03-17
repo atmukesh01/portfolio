@@ -32,13 +32,30 @@ const institutionProjectsData = [
     imagesrc: "/assets/mcq.png",
     githubUrl: "https://github.com/atmukesh01/Online-MCQ",
   },
+  
+  {
+    title: "SNAPDIFF",
+    description:
+      "SnapDiff is a developer productivity tool that eliminates the wait time in software engineering. Most CI/CD pipelines waste hours running thousands of irrelevant tests for every tiny code change. SnapDiff changes that by mapping the internal nervous system of your codebase.",
+    imagesrc: "assets/snapdiff.jfif",
+    githubUrl: "https://github.com/atmukesh01/snapdiff",
+  },
+  {
+    title: "TRADEFLOW",
+    description:
+      "Is a high-performance, discipline-focused trading ledger and analytics terminal. It is designed specifically for traders who prioritize risk management and precise record-keeping over manual spreadsheets.",
+    imagesrc: "assets/tradeflow.jpeg",
+    githubUrl: "https://github.com/atmukesh01/tradeflow",
+
+  },
   {
     title: "GAMEHUB (CONTRIBUTOR)",
     description:
       "GameHub is a desktop-based Java application that acts as a central platform to play multiple mini-games in one place.It provides a simple, interactive GUI where users can switch between games seamlessly. Built using Java Swing, it serves as an all-in-one casual gaming application..",
     imagesrc: "/assets/gamehub.jpg",
     githubUrl: "https://github.com/Sandeepramasamy05/GAME-HUB",
-  },
+  }
+
   
 ];
 
@@ -58,34 +75,6 @@ const industrialProjectsData = [
     imagesrc: "/assets/EMOT.png",
     githubUrl: "https://github.com/atmukesh01/EMOT",
   },
-  /*{
-    title: "Cloud File Storage System",
-    description:
-      "A service for uploading, downloading, and sharing files securely, with folder organization and user authentication.",
-    imagesrc: "/assets/cloudstorage.png",
-    githubUrl: "https://github.com/your-username/cloud-storage",
-  },
-  {
-    title: "Weather Forecast App",
-    description:
-      "An application that fetches and displays current weather and future forecasts from a third-party weather API.",
-    imagesrc: "/assets/weatherapp.png",
-    githubUrl: "https://github.com/your-username/weather-app",
-  },
-  {
-    title: "Recipe Finder Application",
-    description:
-      "An app to search for recipes based on ingredients, view detailed instructions, and save favorite recipes to a personal list.",
-    imagesrc: "/assets/recipeapp.png",
-    githubUrl: "https://github.com/your-username/recipe-finder",
-  },
-  {
-    title: "Fitness Tracker Dashboard",
-    description:
-      "A web app to log workouts, track physical progress over time, and visualize fitness data with interactive charts.",
-    imagesrc: "/assets/fitnessapp.png",
-    githubUrl: "https://github.com/your-username/fitness-tracker",
-  }*/,
 ];
 
 
