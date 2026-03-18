@@ -136,7 +136,7 @@ const Contact = ({ isPageLoading, onLoadingComplete }) => {
       <div className="contact-container">
         <div className="contact-left">
           <img
-            src="public/assets/linkedin black.png"
+            src="assets/black.png"
             alt="Profile"
             className="contact-image"
           />
