@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './Contact.css';
+import profilePic from './assets/black.png';
 
 // The loading animation component
 const LoadingName = () => {
