@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import './Contact.css';
-import profilePic from './assets/black.png';
 
 // The loading animation component
 const LoadingName = () => {
@@ -137,7 +136,7 @@ const Contact = ({ isPageLoading, onLoadingComplete }) => {
       <div className="contact-container">
         <div className="contact-left">
           <img
-            src="assets/black.png"
+            src="assets/linkedin black.png"
             alt="Profile"
             className="contact-image"
           />
